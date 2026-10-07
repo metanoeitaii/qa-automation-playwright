@@ -84,7 +84,7 @@ test('GET user3  returns 200', async({request})=>{
 
 }
 );
-test('POST user returns 201',async({request})=>{
+test('POST giorgos user returns 201',async({request})=>{
   const response = await request.post(
     'https://jsonplaceholder.typicode.com/users',{
       data:{
