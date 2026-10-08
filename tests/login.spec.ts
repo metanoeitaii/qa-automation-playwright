@@ -33,8 +33,10 @@ test('add product to cart',async({ page })=>{
   await page.locator('#add-to-cart-sauce-labs-backpack').click();
   await expect(page.locator('[data-test="shopping-cart-badge"]')).toHaveText('1');
   await page.locator('[data-test="shopping-cart-link"]').click();
-  await expect(page.locator('[data-test="inventory-item-name"]'))
-  .toContainText('Sauce Labs Backpack');
+  await expect(
+  page.locator('[data-test="inventory-item-name"]')
+    .filter({ hasText: 'Sauce Labs Backpack' })
+).toHaveText('Sauce Labs Backpack');
   await expect(page.locator('[data-test="inventory-item-price"]')).toContainText('$29.99');
   await page.locator('[data-test="remove-sauce-labs-backpack"]').click();
   await expect(page.locator('[data-test="remove-sauce-labs-backpack"]')).toHaveCount(0);
@@ -73,8 +75,10 @@ test('checkout',async({ page })=>{
   await page.locator('#add-to-cart-sauce-labs-backpack').click();
   await expect(page.locator('[data-test="shopping-cart-badge"]')).toHaveText('1');
   await page.locator('[data-test="shopping-cart-link"]').click();
-  await expect(page.locator('[data-test="inventory-item-name"]'))
-  .toContainText('Sauce Labs Backpack');
+  await expect(
+  page.locator('[data-test="inventory-item-name"]')
+    .filter({ hasText: 'Sauce Labs Backpack' })
+).toHaveText('Sauce Labs Backpack');
   await expect(page.locator('[data-test="inventory-item-price"]')).toContainText('$29.99');
   await page.locator('[data-test="checkout"]').click();
   await page.locator('[data-test = "firstName"]').fill('Dimitris');
